@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>..:: Trabalho BackEnd ::..</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(event){
+        $("#btnDelete").click(function(){
+                    $.ajax({url: "/users/delete/"+ $("#logincol").html(), type: 'DELETE', success: function (result) {
+                      window.setTimeout(function () {location.reload()}, 1000)
+          }});
+
+        });
+    });
+</script>
+</head>
+
+<body>
+
+
+
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        <a class="navbar-brand" href="#">Users</a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">Home</a></li>
+          <li><a href="/newuser">New User</a></li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="text-center">
+      <br><br>
+      <h1>Users</h1>
+      <p class="lead"></p>
+    </div>
+  <p>This is a paragraph with little content.</p>
+    <div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Login</th>
+            <th>Cpf</th>
+            <th>Data Cadastro</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i< data.length; i++){%>
+            <tr>
+              <td>
+                <%=data[i].name%>
+              </td>
+              <td id="logincol"><%=data[i].login%></td>
+              <td>
+                <%=data[i].cpf%>
+              </td>
+              <td>
+                <%=data[i].createdOn%>
+              </td>
+              <td>
+                <a href="/users/findByLogin/<%=data[i].login %>" class="btn btn-info">
+                  <span class="glyphicon glyphicon-edit"></span>
+                </a>
+              </td>
+              <td>
+                <button type="button" name="btnDelete" id="btnDelete" class="btn btn-danger" >
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+                </a>
+              </td>
+            </tr>
+            <%}%>
+        </tbody>
+      </table>
+    </div></div>
+    <!-- /.container -->
+</body>
+
+</html>
