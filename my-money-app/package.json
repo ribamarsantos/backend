@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon",
+    "dev": "nodemon src/loader.js",
     "production": "pm2 start src/loader.js --name my-money-backend"
   },
   "keywords": [],
@@ -18,5 +18,8 @@
     "mongoose": "^4.7.0",
     "mongoose-paginate": "^5.0.3",
     "node-restful": "^0.2.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
